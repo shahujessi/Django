@@ -1,20 +1,26 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .product import Product
 from .category import Category
+from django.contrib.auth.hashers import make_password,check_password
+from .customer import Customer
 
-# Create your views here.
-def home(request):
-    products=Product.objects.all()
-    categories=Category.objects.all()
-    category_id=request.GET.get('category')
-    if category_id:
-        products=Product.objects.filter(category_id=category_id)
-    else:
-        products=Product.objects.all()
-    data={'products':products, 'categories':categories}
-    return render(request, 'index.html', data)
+
 
 # Signup Form
 def signup(request):
-    return render(request, 'signup.html')
+    if request.method=='GET':
+        return render(request, 'signup.html')
+    else:
+        
+#login page
+def login(request):
+    
+
+#login page
+def login(request):
+    if request.method=='GET':
+        return render(request, 'login.html')
+    else:
+        
+        
